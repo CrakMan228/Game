@@ -2,3 +2,55 @@
 //Дети
 //Дед Мороз
 //Ёлки иголки
+//Окружение
+uses 
+GraphABC; 
+
+var 
+x,y,i:word; 
+opis:String;
+begin 
+
+MaximizeWindow;//Окно на весь экран независимо от разрешения
+y:=WindowHeight div 2; 
+x:=WindowWidth div 2; // устанавливает перо в центре экрана
+ClearWindow(rgb(0,0,0));//Задний фон
+setbrushColor(rgb(255,255,255));//Цвет игровое поле
+Rectangle(x-470,y-470,x+470,y+470);//Игровое поле
+For i:= 0 to 30 do begin 
+setPenColor(rgb(147,229,255)); 
+Line(x-450+30*i,y-450,x-450+30*i,y+450); 
+end; 
+For i:= 0 to 30 do begin 
+setPenColor(rgb(147,229,255)); 
+Line(x-450,y-450+30*i,x+450,y-450+30*i);//Деление поля на клетки 
+end;//Основное поле 
+
+SetFontSize(18); 
+SetFontColor(ClBlack); 
+x:=0;y:=0; 
+Opis:=' Злые волки украли подарки у детей!!!'+#10+
+' Герой, нам нужна твоя помощь!!!'+#10+
+' Помоги деду морозу вернуть подарки.'+#10+
+' Но будь осторожен, волки вас ищут,'+#10+
+' и обязательно постараються вас съесть!'+#10+
+''+#10+//Пролог
+'     - Дед Мороз'+#10+
+'     - Снегурочка'+#10+
+'     - Волки'+#10+
+'     - Ёлки'+#10+
+'     - Дети'; 
+textout(0,0,Opis);
+setPenColor(rgb(255,255,255));
+setbrushColor(rgb(255,0,0));
+Rectangle(10,175,20,185);
+setbrushColor(rgb(147,229,255));
+Rectangle(10,203,20,213);
+setbrushColor(rgb(0,0,0));
+Rectangle(10,231,20,241);
+setbrushColor(rgb(0,255,0));
+Rectangle(10,259,20,269);
+setbrushColor(rgb(255,154,0));
+Rectangle(10,287,20,297);//Обозначение персонажей
+
+end.
