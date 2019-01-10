@@ -1,0 +1,47 @@
+procedure kids(x,y: integer; c_kid: color; give: boolean); {give - это проверка, вручён ли подарок ребёнку (true - вручён). Используется для имитации улыбки}
+   var
+      i:byte;
+   begin
+      SetPenWidth(2);
+      line(x-1,y+5,x-8,y+12);
+      line(x+1,y+5,x+8,y+12);
+      line(x-1,y+9,x-3,y+19);
+      line(x+1,y+9,x+3,y+19);
+      SetPenWidth(1);
+      setbrushcolor(c_kid);
+      ellipse(x-3,y+4,x+4,y+14);
+      setbrushcolor(clYellow);
+      circle(x,y,5);
+      setbrushcolor(clBlue);
+      circle(x-2,y-1,1);
+      circle(x+2,y-1,1);
+      if give=false then //проверка на вручение подарка ребёнку
+         line(x-3,y+2,x+3,y+2) //нейтральная эмоция
+      else
+         Arc(x,y,3,200,340); //радостная эмоция
+      setbrushcolor(clred);
+      for i:=1 to 5 do
+         fillrectangle(x-(5-i), y-3, x+(6-i), y-(3+i));
+      setbrushcolor(clWhite);   
+      circle(x,y-8,2);
+   end;
+procedure kids_color(var c_kid:color); //цвет одежды ребёнка (генерируется рандомно)
+   var
+      color_random:word;
+   begin
+      color_random:=random(6);
+      case color_random of
+         0:
+            c_kid:=clblue;
+         1:
+            c_kid:=clgreen;
+         2:
+            c_kid:=clmagenta;
+         3:
+            c_kid:=clblack;
+         4:
+            c_kid:=clbrown;
+         5:
+            c_kid:=clwhite;
+      end;
+   end;
